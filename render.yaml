@@ -1,0 +1,24 @@
+services:
+  - type: worker
+    name: telegram-bot
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: BOT_USERNAME
+        sync: false
+      - key: ADMIN_ID
+        sync: false
+      - key: ADMIN_CONTACT
+        sync: false
+      - key: FAMGATEWAY_API_KEY
+        sync: false
+      - key: DATABASE_PATH
+        value: /var/data/Pikachu.db
+    disk:
+      name: telegram-bot-data
+      mountPath: /var/data
+      sizeGB: 1
+      
